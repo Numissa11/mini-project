@@ -18,14 +18,21 @@ class App extends React.Component {
 
     let url = `https://jsonplaceholder.typicode.com/users`
     axios.get(url)
-      .then(response => this.setState({ users: response }))
-     .then(response => console.log(this.state.users))
+      .then(response => this.setState({ users: response.data }, () => console.log('Fresh data fetched..', response)))
+      .then(() => console.log(this.state.users))
   }
 
   render() {
     return (
 
       <div>
+
+        <ul>
+          {this.state.users.map(user =>
+            <li key={user.id}> Name: {user.name} Username: {user.high} email: {user.email} Adresse: {user.adresse}</li>
+          )}
+        </ul>
+
         <User />
         <Button variant="contained" color="secondary" size="small" onClick={this.handleUser}>Search</Button>
       </div>
