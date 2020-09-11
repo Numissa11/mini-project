@@ -22,6 +22,11 @@ class UserForm extends React.Component {
             this.setState({ addForm: true });
         }
 
+        handleSubmit = (event) => {
+            alert( 'Congratulations ! ', this.state.name + ' was added');
+            event.preventDefault();
+        }
+
       render() {
         const  { name, username, email, city, addForm } = this.state
 
@@ -37,11 +42,12 @@ class UserForm extends React.Component {
                               <div>Email</div>
                               <TextField type="email" name="email" onChange={this.updateFields} value={email} fullWidth required />
                               <div>City</div>
+                            
                               <TextField type="text" name="city" onChange={this.updateFields} value={city} fullWidth required />
                         </form>
                         :
                        
-                <Button variant="contained" color="secondary" size="small" onClick={() => this.addUser()}>Add user</Button>
+                <Button variant="contained" color="secondary" size="small" onClick={() => this.addUser()}>Add User</Button>
 
 
 }
