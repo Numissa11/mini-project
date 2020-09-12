@@ -13,21 +13,23 @@ class User extends React.Component {
             name: this.props.name,
             username: this.props.username,
             email: this.props.email,
-            city: this.props.address.city,
-            id: this.props.id
+          //  city: this.props.address.city,
+          id: this.props.id
+            
         }
     }
 
     render() {
         console.log(this.state)
-        const { name, username, email, id, city } = this.state
+        //  city removed from const
+        const { name, username, email, id } = this.state
         return (
             <div className='User'>
 
                 <p > Name: {name}</p>
                 <p > Username: {username}</p>
                 <p > Email: {email}</p>
-                <p > City: {city}</p>
+                {/* <p > City: {city}</p> */}
 
 
                 {/*  I implement the delete button on every single  User component */}

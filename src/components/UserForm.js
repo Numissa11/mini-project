@@ -38,20 +38,24 @@ class UserForm extends React.Component {
       handleSubmit = (event) => {
 
             console.log('state du UserForm', this.state)
-            this.props.addUser(this.state)
+           this.props.addUser(this.state)
+           // I cannot add the city in my UserForm because in the API object, I access it like this address.city 
+           // how to do a form where I  could put city as a new object? 
             this.setState({
                   name: '',
                   username: '',
                   email: '',
-                  city: '',
+                  //city: ''
             })
 
-            alert('Congratulations ! ', this.state.name + ' was added');
-            event.preventDefault();
+            alert('Congratulations ! '+ this.state.name + ' was added');
+            
       }
 
       render() {
-            const { name, username, email, city, addForm } = this.state
+
+            // here a removed city, in the error it was saying that city was not defined even if i destructured it with city = this.state.address.city
+            const { name, username, email,  addForm } = this.state
 
             return (
                   <div>
@@ -64,15 +68,15 @@ class UserForm extends React.Component {
                                     <TextField type="text" name="username" onChange={this.handleChange} value={username} fullWidth required />
                                     <div>Email</div>
                                     <TextField type="email" name="email" onChange={this.handleChange} value={email} fullWidth required />
-                                    <div>City</div>
-                                    <TextField type="text" name="city" onChange={this.handleChange} value={city} fullWidth required />
+                                    {/* <div>City</div>
+                                    <TextField type="text" name="city" onChange={this.handleChange} value={city} fullWidth required /> */}
 
-                                    <Button variant="contained" color="secondary" size="small" onClick={() => this.handleSubmit()}>Add User</Button>
+                                    <Button variant="contained" color="primary" size="small" onClick={() => this.handleSubmit()}>Add User</Button>
 
                               </form>
                               :
 
-                              <Button variant="contained" color="secondary" size="small" onClick={() => this.showForm()}>Add User</Button>
+                              <Button variant="contained" color="secondary" size="small" onClick={() => this.showForm()}>Add a User</Button>
 
 
                         }

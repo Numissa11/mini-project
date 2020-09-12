@@ -62,7 +62,12 @@ class App extends React.Component {
           ))}
         </ul>
 
-        <UserForm />
+        <Button variant="contained" color="secondary" size="small" onClick={this.getUser}>Search</Button>
+
+
+        <UserForm
+        addUser={this.addUser}
+        />
 
         {/* Note: this code was mapping directely the state will all the users (object) and was displaying it all together
 
@@ -72,7 +77,6 @@ class App extends React.Component {
             --- Longitude: {user['address']['geo']['lng']}</li>
           )*/}
 
-        <Button variant="contained" color="secondary" size="small" onClick={this.getUser}>Search</Button>
 
 
 
