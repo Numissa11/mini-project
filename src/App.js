@@ -27,6 +27,17 @@ class App extends React.Component {
     this.setState({ users })
   }
 
+  // addCharacter receive the new User, the new state that is is UserForm
+// then, with the variable users, we capture the actual array of users that are in the state
+// we push the new user received in the Array we just created 
+
+  addUser = (newUser) => {
+    let characters = this.state.characters;
+    characters.push(newUser)
+
+    this.setState({ characters: characters })
+  }
+
   // TODO: When adding a new user think about how can i copy the state property (users) as I cannot mutate the state directly e.g. this.state.users.push(users)
 
   // Spread operator || create a copy

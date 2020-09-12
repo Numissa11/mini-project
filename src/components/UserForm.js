@@ -17,42 +17,69 @@ class UserForm extends React.Component {
             }
       }
 
-      addUser = (event) => {
-           
-            this.setState({ addForm: true });
-        }
+      showForm = (event) => {
 
-        handleSubmit = (event) => {
-            alert( 'Congratulations ! ', this.state.name + ' was added');
+            this.setState({ addForm: true });
+      }
+
+        //question: does handleSubmit first call addCharacter and in second set the State?
+    // or does handlesubmit first set the State and after pass down the new user to AddCharacter?
+    // I have troubles with order. I guess first the state here is updated and then passed down through prps to the function addUser
+      
+      addUser = (event) => {
+
+            
+      }
+
+      handleChange = (event) => {
+            this.setState({value: event.target[name]});
+      }
+
+// here the : 'this.props.addUser(this.state)' will be addUser(newUser) so this.state = newUser
+      handleSubmit = (event) => {
+            this.setState({ addForm: true });
+console.log('state du UserForm', this.state)
+            this.props.addUser(this.state)
+            this.setState({
+                name: '',
+                species: '',
+                status: '',
+                id: '',
+                image: '',
+            })
+
+            alert('Congratulations ! ', this.state.name + ' was added');
             event.preventDefault();
-        }
+      }
 
       render() {
-        const  { name, username, email, city, addForm } = this.state
+            const { name, username, email, city, addForm } = this.state
 
             return (
                   <div>
 
-{addForm ?
-                        <form onSubmit={this.handleSubmit}>
-                              <div>Name</div>
-                              <TextField type="text" name="name" onChange={this.updateFields} value={name} fullWidth required />
-                              <div>Username</div>
-                              <TextField type="text" name="username" onChange={this.updateFields} value={username} fullWidth required />
-                              <div>Email</div>
-                              <TextField type="email" name="email" onChange={this.updateFields} value={email} fullWidth required />
-                              <div>City</div>
-                            
-                              <TextField type="text" name="city" onChange={this.updateFields} value={city} fullWidth required />
-                        </form>
-                        :
-                       
-                <Button variant="contained" color="secondary" size="small" onClick={() => this.addUser()}>Add User</Button>
+                        {addForm ?
+                              <form onSubmit={this.handleSubmit}>
+                                    <div>Name</div>
+                                    <TextField type="text" name="name" onChange={this.handleChange} value={name} fullWidth required />
+                                    <div>Username</div>
+                                    <TextField type="text" name="username" onChange={this.handleChange} value={username} fullWidth required />
+                                    <div>Email</div>
+                                    <TextField type="email" name="email" onChange={this.handleChange} value={email} fullWidth required />
+                                    <div>City</div>
+                                    <TextField type="text" name="city" onChange={this.handleChange} value={city} fullWidth required />
+                                    
+                                    <Button variant="contained" color="secondary" size="small" onClick={() => this.addUser()}>Add User</Button>
+
+                              </form>
+                              :
+
+                              <Button variant="contained" color="secondary" size="small" onClick={() => this.handleSubmit()}>Add User</Button>
 
 
-}
+                        }
 
-                        
+
 
                   </div>
 
