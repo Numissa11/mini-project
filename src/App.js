@@ -28,8 +28,8 @@ class App extends React.Component {
   }
 
   // addCharacter receive the new User, the new state that is is UserForm, in the other component
-// then, with the variable users, we capture the actual array of users that are in the state in this component
-// we push the new user received in the Array we just created 
+  // then, with the variable users, we capture the actual array of users that are in the state in this component
+  // we push the new user received in the Array we just created 
 
   addUser = (newUser) => {
     let users = this.state.users;
@@ -48,7 +48,13 @@ class App extends React.Component {
 
 
 
+
+
       <div className='App'>
+
+        <UserForm
+          addUser={this.addUser}
+        />
 
         <ul>
           {/*When mapping each user,  I create a reusable component and pass data as props to this component (User Component) */}
@@ -61,13 +67,12 @@ class App extends React.Component {
             />
           ))}
         </ul>
+        <div className='ButtonDiv'>
+          <Button variant="contained" color="secondary" size="small" onClick={this.getUser}>Search</Button>
+        </div>
 
-        <Button variant="contained" color="secondary" size="small" onClick={this.getUser}>Search</Button>
 
 
-        <UserForm
-        addUser={this.addUser}
-        />
 
         {/* Note: this code was mapping directely the state will all the users (object) and was displaying it all together
 

@@ -1,9 +1,19 @@
+.App {
+  
+  padding: 1rem;
+  width:  50%;
+  margin: auto;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
 .User {
   color:rgb(114, 85, 85);
   background-color: rosybrown;
   font-size: 25px;
   border: 1pc dotted #777;
   padding-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 ul {
@@ -12,13 +22,10 @@ ul {
   line-height: 2rem;
   border-bottom: 1pc dotted #777;
   text-align: center;
+ 
 }
 
-.App {
-  
-  padding: 1rem;
-  width:  50%;
-  margin: auto;
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
+
+.ButtonDiv {
+  margin-bottom: 2rem;
 }
