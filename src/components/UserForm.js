@@ -22,30 +22,28 @@ class UserForm extends React.Component {
             this.setState({ addForm: true });
       }
 
-        //question: does handleSubmit first call addCharacter and in second set the State?
-    // or does handlesubmit first set the State and after pass down the new user to AddCharacter?
-    // I have troubles with order. I guess first the state here is updated and then passed down through prps to the function addUser
-      
-      addUser = (event) => {
+      //question: does handleSubmit first call addCharacter and in second set the State?
+      // or does handlesubmit first set the State and after pass down the new user to AddCharacter?
+      // I have troubles with order. I guess first the state here is updated and then passed down through prps to the function addUser
 
-            
-      }
 
       handleChange = (event) => {
-            this.setState({value: event.target[name]});
+            let value = event.target.value;
+        let name = event.target.name;
+        this.setState({ [name]: value })
       }
 
-// here the : 'this.props.addUser(this.state)' will be addUser(newUser) so this.state = newUser
+      // here the : 'this.props.addUser(this.state)' will be addUser(newUser) so this.state = newUser
+
       handleSubmit = (event) => {
-            this.setState({ addForm: true });
-console.log('state du UserForm', this.state)
+
+            console.log('state du UserForm', this.state)
             this.props.addUser(this.state)
             this.setState({
-                name: '',
-                species: '',
-                status: '',
-                id: '',
-                image: '',
+                  name: '',
+                  username: '',
+                  email: '',
+                  city: '',
             })
 
             alert('Congratulations ! ', this.state.name + ' was added');
@@ -68,13 +66,13 @@ console.log('state du UserForm', this.state)
                                     <TextField type="email" name="email" onChange={this.handleChange} value={email} fullWidth required />
                                     <div>City</div>
                                     <TextField type="text" name="city" onChange={this.handleChange} value={city} fullWidth required />
-                                    
-                                    <Button variant="contained" color="secondary" size="small" onClick={() => this.addUser()}>Add User</Button>
+
+                                    <Button variant="contained" color="secondary" size="small" onClick={() => this.handleSubmit()}>Add User</Button>
 
                               </form>
                               :
 
-                              <Button variant="contained" color="secondary" size="small" onClick={() => this.handleSubmit()}>Add User</Button>
+                              <Button variant="contained" color="secondary" size="small" onClick={() => this.showForm()}>Add User</Button>
 
 
                         }
